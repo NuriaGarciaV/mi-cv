@@ -13,7 +13,7 @@ Bases de datos: PostgresSQL, MongoDB, Cassandra
 Desarrollo: VS Code, Google Colab, Git, GitHub
 Documentación: LaTeX
 
-Big Data y Ecosistemas Distribuidos: Principios de la computación distribuida, y uso práctico de herramientas como PySpark y Hadoop para el procesamiento de grandes volúmenes de datos.
+Procesamiento de Datos a Escala: Principios de la computación distribuida, y uso práctico de herramientas como PySpark y Hadoop para el procesamiento de grandes volúmenes de datos.
 Bases de Datos Avanzadas: Diseño, modelado y administración de bases de datos relacionales (PostgresSQL) y no relacionales (MongoDB, Cassandra)
 
 Programación Aplicada de Datos: Uso de Python (pandas, numpy) y Java para tareas de análisis, modelado y automatización.

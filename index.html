@@ -731,7 +731,8 @@
     <div class="container">
         <div class="header-section">
             <h1>Nuria García Valdecasas Cobo</h1>
-            <p class="subtitle">Data Scientist & Mathematics Student</p>
+            <p class="subtitle">Estudiante de Ciencia de Datos y Matemáticas Aplicadas</p>
+            <p class="subtitle">Universidad- ITAM</p>
         </div>
 
         <div class="column-left">
@@ -814,7 +815,7 @@
             <section id="modulos-clave">
                 <h2>Módulos Clave</h2>
                 <div class="modulo-item">
-                    <strong>Big Data y Ecosistemas Distribuidos</strong>
+                    <strong>Procesamiento de Datos a Escala</strong>
                     <p>Principios de la computación distribuida, y uso práctico de herramientas como PySpark y Hadoop para el procesamiento de grandes volúmenes de datos.</p>
                 </div>
                 <div class="modulo-item">
@@ -842,86 +843,81 @@
 
     <script>
         // Función para cargar proyectos desde GitHub
-        async function loadGitHubProjects() {
-            const username = 'NuriaGarciaV';
-            const apiUrl = `https://api.github.com/users/${username}/repos`;
-            const projectsContainer = document.getElementById('projects-container');
+        // Función para cargar proyectos desde GitHub
+    // Función para cargar proyectos desde GitHub
+    async function loadGitHubProjects() {
+        // VERIFICACIÓN: ASEGÚRATE QUE ESTE USUARIO ES EXACTO
+        const username = 'NuriaGarciaV'; 
+        const apiUrl = `https://api.github.com/users/${username}/repos`;
+        const projectsContainer = document.getElementById('projects-container');
 
-            try {
-                const response = await fetch(apiUrl);
-                if (!response.ok) {
-                    throw new Error('Error al cargar los repositorios');
-                }
-
-                const repos = await response.json();
-
-                // Filtrar repositorios: no forks y con descripción
-                const filteredRepos = repos.filter(repo => 
-                    !repo.fork && repo.description && repo.description.trim() !== ''
-                );
-
-                // Ordenar por fecha de actualización (más recientes primero)
-                filteredRepos.sort((a, b) => 
-                    new Date(b.updated_at) - new Date(a.updated_at)
-                );
-
-                // Limpiar el contenedor
-                projectsContainer.innerHTML = '';
-
-                // Generar HTML para cada repositorio
-                filteredRepos.forEach(repo => {
-                    const projectItem = document.createElement('div');
-                    projectItem.className = 'project-item';
-
-                    // Título del proyecto
-                    const title = document.createElement('h3');
-                    title.textContent = repo.name;
-                    projectItem.appendChild(title);
-
-                    // Descripción
-                    const description = document.createElement('p');
-                    description.textContent = repo.description;
-                    projectItem.appendChild(description);
-
-                    // Botones
-                    const buttonsDiv = document.createElement('div');
-                    buttonsDiv.className = 'project-buttons';
-
-                    // Botón Ver Demo (GitHub Pages)
-                    const demoUrl = `https://${username.toLowerCase()}.github.io/${repo.name}/`;
-                    const demoButton = document.createElement('a');
-                    demoButton.href = demoUrl;
-                    demoButton.className = 'project-btn project-btn-primary';
-                    demoButton.textContent = 'Ver Demo';
-                    demoButton.target = '_blank';
-                    demoButton.rel = 'noopener noreferrer';
-                    buttonsDiv.appendChild(demoButton);
-
-                    // Botón Ver Código
-                    const codeButton = document.createElement('a');
-                    codeButton.href = repo.html_url;
-                    codeButton.className = 'project-btn project-btn-secondary';
-                    codeButton.textContent = 'Código';
-                    codeButton.target = '_blank';
-                    codeButton.rel = 'noopener noreferrer';
-                    buttonsDiv.appendChild(codeButton);
-
-                    projectItem.appendChild(buttonsDiv);
-                    projectsContainer.appendChild(projectItem);
-                });
-
-                // Si no hay proyectos, mostrar un mensaje
-                if (filteredRepos.length === 0) {
-                    projectsContainer.innerHTML = '<p style="color: var(--text-secondary); grid-column: 1 / -1; text-align: center; padding: 20px;">No hay proyectos disponibles en este momento.</p>';
-                }
-
-            } catch (error) {
-                console.error('Error al cargar proyectos:', error);
-                projectsContainer.innerHTML = '<p style="color: var(--text-secondary); grid-column: 1 / -1; text-align: center; padding: 20px;">Error al cargar los proyectos. Por favor, intenta más tarde.</p>';
+        try {
+            const response = await fetch(apiUrl);
+            if (!response.ok) {
+                // Error si el usuario no existe
+                throw new Error(`Error ${response.status}: El usuario ${username} no es válido.`);
             }
-        }
 
-        // Cargar proyectos cuando la página esté lista
+            const repos = await response.json();
+
+            // **--- MODIFICACIÓN CRÍTICA DEL FILTRO ---**
+            // Muestra repositorios SÍ O SÍ. Solo requerimos que tengan una descripción.
+            // Esto soluciona el problema de que no aparezcan los forks/proyectos sin descripción.
+            const filteredRepos = repos.filter(repo => 
+                repo.description && repo.description.trim() !== ''
+            );
+            // **--- FIN DE LA MODIFICACIÓN ---**
+
+            // Ordenar por fecha de actualización (más recientes primero)
+            filteredRepos.sort((a, b) => 
+                new Date(b.updated_at) - new Date(a.updated_at)
+            );
+
+            projectsContainer.innerHTML = ''; // Limpiar mensaje de carga
+
+            // Generar HTML para cada repositorio
+            filteredRepos.forEach(repo => {
+                const projectItem = document.createElement('div');
+                projectItem.className = 'project-item';
+
+                const title = document.createElement('h3');
+                title.textContent = repo.name.replace(/-/g, ' '); // Mejorar lectura
+                projectItem.appendChild(title);
+
+                const description = document.createElement('p');
+                description.textContent = repo.description;
+                projectItem.appendChild(description);
+
+                // Botones
+                const buttonsDiv = document.createElement('div');
+                buttonsDiv.className = 'project-buttons';
+
+                // **--- MODIFICACIÓN DE BOTONES (SOLO UN BOTÓN FUNCIONAL) ---**
+                // Botón PRINCIPAL: Apunta al repositorio y lo llamamos 'Ver Proyecto / Código'
+                const mainButton = document.createElement('a');
+                mainButton.href = repo.html_url; // Apunta al repositorio de GitHub
+                mainButton.className = 'project-btn project-btn-primary';
+                mainButton.textContent = 'Ver Proyecto / Código'; 
+                mainButton.target = '_blank';
+                mainButton.rel = 'noopener noreferrer';
+                buttonsDiv.appendChild(mainButton);
+                // **--- FIN DE LA MODIFICACIÓN ---**
+
+                projectItem.appendChild(buttonsDiv);
+                projectsContainer.appendChild(projectItem);
+            });
+
+            // Mensaje si no hay proyectos con descripción
+            if (filteredRepos.length === 0) {
+                projectsContainer.innerHTML = '<p style="color: var(--text-secondary); grid-column: 1 / -1; text-align: center; padding: 20px;">No se encontraron proyectos con descripción. Por favor, añade una descripción corta a tus repositorios en GitHub.</p>';
+            }
+
+        } catch (error) {
+            console.error('Error al cargar proyectos:', error);
+            projectsContainer.innerHTML = `<p style="color: var(--text-secondary); grid-column: 1 / -1; text-align: center; padding: 20px;">Error al conectar con GitHub. (${error.message})</p>`;
+        }
+    }
+            // Cargar proyectos cuando la página esté lista
         document.addEventListener('DOMContentLoaded', loadGitHubProjects);
     </script>
 </body>
