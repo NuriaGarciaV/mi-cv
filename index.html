@@ -249,8 +249,18 @@
             color: var(--text-secondary);
             font-size: 1.1rem;
             font-weight: 400;
-            margin-bottom: 20px;
+            margin-bottom: 5px;
             font-family: 'JetBrains Mono', monospace;
+        }
+        
+        /* Estilo de la Universidad (Gris y Sutil) */
+        .university-name {
+            color: var(--text-secondary); /* ¡Esto lo pone en GRIS! */
+            font-size: 0.95rem;           
+            font-weight: 400;
+            margin-top: 10px;             /* Espacio debajo del Rol */
+            margin-bottom: 30px;          /* Espacio antes de Contacto */
+            opacity: 0.9;
         }
 
         h2 {
@@ -464,7 +474,7 @@
             margin: 0;
         }
 
-        .education-item,
+        .experience-item,
         .experience-item {
             margin-bottom: 25px;
             padding: 20px;
@@ -476,7 +486,6 @@
             overflow: hidden;
         }
 
-        .education-item::before,
         .experience-item::before {
             content: '';
             position: absolute;
@@ -487,14 +496,12 @@
             background: linear-gradient(180deg, var(--primary-color), var(--accent));
         }
 
-        .education-item:hover,
         .experience-item:hover {
             background: rgba(255, 255, 255, 0.04);
             border-color: rgba(0, 217, 255, 0.3);
             transform: translateX(5px);
         }
 
-        .education-item h3,
         .experience-item h3 {
             color: var(--text-primary);
             margin-bottom: 8px;
@@ -502,14 +509,19 @@
             font-weight: 600;
         }
 
-        .education-item p,
         .experience-item p {
             color: var(--text-secondary);
             margin: 5px 0;
             font-size: 0.95rem;
         }
 
-        .projects-grid {
+        .proyectos-automaticos {
+            grid-column: 1 / -1;   
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        .proyectos-automaticos .projects-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
@@ -647,6 +659,8 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
+
+
         @media (max-width: 1200px) {
             .container {
                 max-width: 95%;
@@ -732,17 +746,29 @@
         <div class="header-section">
             <h1>Nuria García Valdecasas Cobo</h1>
             <p class="subtitle">Estudiante de Ciencia de Datos y Matemáticas Aplicadas</p>
-            <p class="subtitle">Universidad- ITAM</p>
+            <p class="university-name">Universidad: Instituto Tecnológico Autónomo de México (ITAM)</p>
         </div>
 
         <div class="column-left">
             <section id="contacto">
                 <h2>Contacto</h2>
-                </section>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>Teléfono:</strong> 55 8614 1016
+                    </div>
+                    <div class="contact-item">
+                        <strong>Email:</strong> nuria.090904@gmail.com
+                    </div>
+                     <div class="contact-item">
+                        <strong>GitHub:</strong> <a href="https://github.com/NuriaGarciaV" style="color: var(--primary-color);">NuriaGarciaV</a>
+                    </div>
+                </div>
+            </section>
 
             <section id="perfil">
                 <h2>Perfil</h2>
-                </section>
+                <p>Estudiante apasionada de ciencia de datos y matemáticas aplicadas con un sólido entendimiento en la gestión y el análisis de datos. Especializada en la limpieza, automatización de procesos y modelado para garantizar la calidad y fiabilidad de la información. En constante aprendizaje de nuevas herramientas, mi objetivo es aplicar el análisis de datos para construir soluciones que generen insights y promuevan la mejora continua.</p>
+            </section>
 
             <section id="experiencia-laboral">
                 <h2>Experiencia Laboral</h2>
@@ -766,16 +792,13 @@
                         <strong>Certificaciones Técnicas de Danza y Logro Competitivo</strong>
                         <p><strong>Ballet Clásico:</strong> Certificación de **Intermediate Foundation** de la Royal Academy of Dance (RAD). <br> <strong>Danza de Carácter:</strong> Certificado **Nivel 5 de Tap** y **Nivel 4 de Modern**. <br> <strong>Logro Competitivo:** **Tercer lugar** en competencia local de Baile Irlandés (Irish Dance).</p>
                     </div>
-                    <div class="modulo-item">
-                        <strong>Habilidades de Liderazgo y Enfoque al Detalle</strong>
-                        <p>El dominio de múltiples disciplinas de danza demuestra **disciplina, consistencia, y la capacidad de dominar sistemas complejos** de reglas y técnica, habilidades esenciales para proyectos de Big Data y PySpark.</p>
-                    </div>
                 </div>
             </section>
         </div>
 
         <div class="column-right">
             <div id="foto-perfil"></div>
+
             <section id="habilidades">
                 <h2>Habilidades</h2>
                 <div class="skills-grid">
@@ -819,21 +842,23 @@
 
             <section id="modulos-clave">
                 <h2>Módulos Clave</h2>
-                <div class="modulo-item">
-                    <strong>Procesamiento de Datos a Escala</strong>
-                    <p>Principios de la computación distribuida, y uso práctico de herramientas como PySpark y Hadoop para el procesamiento de grandes volúmenes de datos.</p>
-                </div>
-                <div class="modulo-item">
-                    <strong>Bases de Datos Avanzadas</strong>
-                    <p>Diseño, modelado y administración de bases de datos relacionales (PostgreSQL) y no relacionales (MongoDB, Cassandra).</p>
-                </div>
-                <div class="modulo-item">
-                    <strong>Programación Aplicada de Datos</strong>
-                    <p>Uso de Python (pandas, numpy) y Java para tareas de análisis, modelado y automatización.</p>
-                </div>
-                <div class="modulo-item">
-                    <strong>Comunicación Técnica</strong>
-                    <p>Desarrollo de documentación formal y reportes científicos utilizando el sistema de LaTeX.</p>
+                <div class="skills-grid">
+                    <div class="modulo-item">
+                        <strong>Procesamiento de Datos a Escala</strong>
+                        <p>Principios de la computación distribuida, y uso práctico de herramientas como PySpark y Hadoop para el procesamiento de grandes volúmenes de datos.</p>
+                    </div>
+                    <div class="modulo-item">
+                        <strong>Bases de Datos Avanzadas</strong>
+                        <p>Diseño, modelado y administración de bases de datos relacionales (PostgreSQL) y no relacionales (MongoDB, Cassandra).</p>
+                    </div>
+                    <div class="modulo-item">
+                        <strong>Programación Aplicada de Datos</strong>
+                        <p>Uso de Python (pandas, numpy) y Java para tareas de análisis, modelado y automatización.</p>
+                    </div>
+                    <div class="modulo-item">
+                        <strong>Comunicación Técnica</strong>
+                        <p>Desarrollo de documentación formal y reportes científicos utilizando el sistema de LaTeX.</p>
+                    </div>
                 </div>
             </section>
         </div>
@@ -841,90 +866,80 @@
         <section id="proyectos-automaticos" class="projects-section">
             <h2>Proyectos</h2>
             <div class="projects-grid" id="projects-container">
-                <!-- Los proyectos se cargarán aquí automáticamente -->
+                <p style="text-align: center; color: var(--text-secondary); grid-column: 1 / -1;">Cargando proyectos de GitHub...</p>
             </div>
         </section>
     </div>
 
     <script>
         // Función para cargar proyectos desde GitHub
-        // Función para cargar proyectos desde GitHub
-    // Función para cargar proyectos desde GitHub
-    async function loadGitHubProjects() {
-        // VERIFICACIÓN: ASEGÚRATE QUE ESTE USUARIO ES EXACTO
-        const username = 'NuriaGarciaV'; 
-        const apiUrl = `https://api.github.com/users/${username}/repos`;
-        const projectsContainer = document.getElementById('projects-container');
+        async function loadGitHubProjects() {
+            // USUARIO DE GITHUB (CONFIRMADO)
+            const username = 'NuriaGarciaV'; 
+            const apiUrl = `https://api.github.com/users/${username}/repos`;
+            const projectsContainer = document.getElementById('projects-container');
 
-        try {
-            const response = await fetch(apiUrl);
-            if (!response.ok) {
-                // Error si el usuario no existe
-                throw new Error(`Error ${response.status}: El usuario ${username} no es válido.`);
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    throw new Error(`Error ${response.status}: El usuario ${username} no es válido.`);
+                }
+
+                const repos = await response.json();
+
+                // FILTRO CORREGIDO: Solo se requiere una descripción para que aparezca.
+                const filteredRepos = repos.filter(repo => 
+                    repo.description && repo.description.trim() !== ''
+                );
+
+                // Ordenar por fecha de actualización (más recientes primero)
+                filteredRepos.sort((a, b) => 
+                    new Date(b.updated_at) - new Date(a.updated_at)
+                );
+
+                projectsContainer.innerHTML = ''; // Limpiar mensaje de carga
+
+                // Generar HTML para cada repositorio
+                filteredRepos.forEach(repo => {
+                    const projectItem = document.createElement('div');
+                    projectItem.className = 'project-item';
+
+                    const title = document.createElement('h3');
+                    title.textContent = repo.name.replace(/-/g, ' '); 
+                    projectItem.appendChild(title);
+
+                    const description = document.createElement('p');
+                    description.textContent = repo.description;
+                    projectItem.appendChild(description);
+
+                    const buttonsDiv = document.createElement('div');
+                    buttonsDiv.className = 'project-buttons';
+
+                    // Botón PRINCIPAL: Apunta al repositorio y lo llamamos 'Ver Proyecto / Código'
+                    const mainButton = document.createElement('a');
+                    mainButton.href = repo.html_url; 
+                    mainButton.className = 'project-btn project-btn-primary';
+                    mainButton.textContent = 'Ver Proyecto / Código'; 
+                    mainButton.target = '_blank';
+                    mainButton.rel = 'noopener noreferrer';
+                    buttonsDiv.appendChild(mainButton);
+
+                    projectItem.appendChild(buttonsDiv);
+                    projectsContainer.appendChild(projectItem);
+                });
+
+                // Mensaje si no hay proyectos con descripción
+                if (filteredRepos.length === 0) {
+                    projectsContainer.innerHTML = '<p style="color: var(--text-secondary); grid-column: 1 / -1; text-align: center; padding: 20px;">No se encontraron proyectos con descripción. Por favor, añade una descripción corta a tus repositorios en GitHub.</p>';
+                }
+
+            } catch (error) {
+                console.error('Error al cargar proyectos:', error);
+                projectsContainer.innerHTML = `<p style="color: var(--text-secondary); grid-column: 1 / -1; text-align: center; padding: 20px;">Error al conectar con GitHub. (${error.message})</p>`;
             }
-
-            const repos = await response.json();
-
-            // **--- MODIFICACIÓN CRÍTICA DEL FILTRO ---**
-            // Muestra repositorios SÍ O SÍ. Solo requerimos que tengan una descripción.
-            // Esto soluciona el problema de que no aparezcan los forks/proyectos sin descripción.
-            const filteredRepos = repos.filter(repo => 
-                repo.description && repo.description.trim() !== ''
-            );
-            // **--- FIN DE LA MODIFICACIÓN ---**
-
-            // Ordenar por fecha de actualización (más recientes primero)
-            filteredRepos.sort((a, b) => 
-                new Date(b.updated_at) - new Date(a.updated_at)
-            );
-
-            projectsContainer.innerHTML = ''; // Limpiar mensaje de carga
-
-            // Generar HTML para cada repositorio
-            filteredRepos.forEach(repo => {
-                const projectItem = document.createElement('div');
-                projectItem.className = 'project-item';
-
-                const title = document.createElement('h3');
-                title.textContent = repo.name.replace(/-/g, ' '); // Mejorar lectura
-                projectItem.appendChild(title);
-
-                const description = document.createElement('p');
-                description.textContent = repo.description;
-                projectItem.appendChild(description);
-
-                // Botones
-                const buttonsDiv = document.createElement('div');
-                buttonsDiv.className = 'project-buttons';
-
-                // **--- MODIFICACIÓN DE BOTONES (SOLO UN BOTÓN FUNCIONAL) ---**
-                // Botón PRINCIPAL: Apunta al repositorio y lo llamamos 'Ver Proyecto / Código'
-                const mainButton = document.createElement('a');
-                mainButton.href = repo.html_url; // Apunta al repositorio de GitHub
-                mainButton.className = 'project-btn project-btn-primary';
-                mainButton.textContent = 'Ver Proyecto / Código'; 
-                mainButton.target = '_blank';
-                mainButton.rel = 'noopener noreferrer';
-                buttonsDiv.appendChild(mainButton);
-                // **--- FIN DE LA MODIFICACIÓN ---**
-
-                projectItem.appendChild(buttonsDiv);
-                projectsContainer.appendChild(projectItem);
-            });
-
-            // Mensaje si no hay proyectos con descripción
-            if (filteredRepos.length === 0) {
-                projectsContainer.innerHTML = '<p style="color: var(--text-secondary); grid-column: 1 / -1; text-align: center; padding: 20px;">No se encontraron proyectos con descripción. Por favor, añade una descripción corta a tus repositorios en GitHub.</p>';
-            }
-
-        } catch (error) {
-            console.error('Error al cargar proyectos:', error);
-            projectsContainer.innerHTML = `<p style="color: var(--text-secondary); grid-column: 1 / -1; text-align: center; padding: 20px;">Error al conectar con GitHub. (${error.message})</p>`;
         }
-    }
-            // Cargar proyectos cuando la página esté lista
+
         document.addEventListener('DOMContentLoaded', loadGitHubProjects);
     </script>
 </body>
 </html>
-
